@@ -1,0 +1,11 @@
+# -*- coding: utf-8 -*-
+
+import requests
+
+headers = {'Accept': 'application/json', 'Content-Type': 'application/json', 'Authorization': 'Bearer <YOUR TOKEN>'}
+
+qiwi_autoriz = requests.get('https://edge.qiwi.com/person-profile/v1/profile/current?authInfoEnabled', headers=headers)
+qiwi_paymates = requests.get('https://edge.qiwi.com/payment-history/v1/persons/YOUR WALLET/payments?rows=1', headers=headers)
+
+upd = qiwi_paymates.json()
+print(upd['data'][0]['comment'])
